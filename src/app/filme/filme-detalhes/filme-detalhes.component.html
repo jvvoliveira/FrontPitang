@@ -1,0 +1,63 @@
+<div class="card container">
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <div class="card">
+        <img class="card-img" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ filme?.poster }}" alt="">
+      </div>
+    </div>
+
+    &nbsp;
+    <div class="col-12 col-md-7">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">{{ filme?.titulo }} ({{ filme?.anoLancamento}})</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-title text-justify"> <strong>País de Origem:</strong> {{ filme?.paisDeOrigem }}</p>
+          <p class="card-title text-justify">
+            <strong>Lingua:</strong> {{filme?.lingua}}
+            <strong>Duração:</strong> {{ filme?.duracao }}</p>
+
+          <p><strong>Sinopse:</strong></p>
+          <p class="card-title text-justify">{{ filme?.descricao }}</p>
+          <p><strong>Gêneros:</strong> </p>
+          <div class="d-inline-block" *ngFor="let genero of filme.generos">
+            <span class="badge badge-pill badge-primary">{{ genero.descricao }}</span>
+          </div>
+          <br />
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <button class="btn btn-primary offset-1 col-md-4" (click)="goAtualizarFilme(filme)">Atualizar</button>
+        <button class="btn btn-danger offset-2 col-md-4" (click)="deletarFilme()">Deletar</button>
+      </div>
+    </div>
+  </div>
+  &nbsp;
+  <h3 class="text-center"><strong>Atores: </strong></h3>
+  <div id="atores" class="row pessoas">
+    <ol>
+    <li class="card" *ngFor="let ator of filme.atores" (click)="visualizarAtor(ator)" style="width: 10rem; display: inline-block">
+      <img class="card-img" src="https://image.tmdb.org/t/p/w500{{ ator.poster }}">
+      <div class="card-body">
+        <h5 class="card-title text-justify">{{ ator.nome }}</h5>
+      </div>
+    </li>
+  </ol>
+  </div>
+  <h3 class="text-center"><strong>Produção: </strong></h3>
+  <div id="produtores" class="row pessoas">
+    <ol>
+    <li class="card" *ngFor="let produtor of filme.produtores" (click)="visualizarProdutor(produtor)"
+      style="width: 10rem; display: inline-block">
+      <img class="card-img" src="https://image.tmdb.org/t/p/w500{{ produtor.poster }}">
+      <div class="card-body">
+        <h5 class="card-title text-justify">{{ produtor.nome }}</h5>
+        <h5 *ngIf="produtor.tipo == 'Writing'" class="card-title text-justify">Autor</h5>
+        <h5 *ngIf="produtor.tipo == 'Directing'" class="card-title text-justify">Diretor</h5>
+      </div>
+    </li>
+  </ol>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="card">
+  <div class="card-header">
+      <h5 class="title text-center">Editar Serie</h5>
+  </div>
+  <div class="card-body">
+      <div class="row">
+          <div class="col-4">
+              <img class="card-img" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ serie?.poster}}"
+                  alt="">
+                  <button class="btn btn-primary col-12" (click)="atualizarSerie()">Atualizar</button>
+          </div>
+          <div class="col-8">
+              <form [formGroup]="formDetalhes">
+                  <div class="form-group">
+                      <span class="label label-primary">Título</span>
+                      <input type="text" formControlName="titulo" placeholder="título"
+                          class="form-control form-control-lg" (input)="this.programaDTO.titulo = $event.target.value" />
+                      &nbsp;
+                      <span class="label label-primary">Descrição</span>
+                      <textarea placeholder="sinopse" formControlName="descricao" class="form-control form-control-lg"
+                          rows="8" (input)="this.programaDTO.descricao = $event.target.value"></textarea>
+                          &nbsp;
+                      <span class="label label-primary">Pais de Origem</span>
+                      <input type="text" placeholder="origem" formControlName="paisDeOrigem" class="form-control form-control-lg"
+                          (input)="this.programaDTO.paisDeOrigem = $event.target.value"/>
+                          &nbsp;
+                      <span class="label label-primary">Lingua</span>
+                      <input type="text" placeholder="idioma" formControlName="lingua" class="form-control form-control-lg"
+                          (input)="this.programaDTO.lingua = $event.target.value"/>
+                          <span class="label label-primary">Ano de Lançamento</span>
+                      <input type="number" placeholder="ano de lançamento" formControlName="anoLancamento" class="form-control form-control-lg"
+                          (input)="this.programaDTO.anoLancamento = $event.target.value"/>
+                          <span class="label label-primary">Duração</span>
+                      <input type="number" placeholder="duração(minutos)" formControlName="duracao" class="form-control form-control-lg"
+                          (input)="this.programaDTO.duracao = $event.target.value"/>
+                          <span class="label label-primary">Temporadas</span>
+                      <input type="number" placeholder="temporadas" formControlName="temporadas" class="form-control form-control-lg"
+                          (input)="this.programaDTO.temporadas = $event.target.value"/>
+                      
+                          <span class="label label-primary">Gêneros:</span>
+                      <textarea 
+                          [value]="generos" type="text" placeholder="gênero"
+                          class="form-control form-control-lg" (input)="modificarGeneros($event.target.value)"></textarea>
+                      <br />
+
+                      <span class="label label-primary">Atores:</span>
+                      <textarea 
+                          [value]="atores" type="text" placeholder="atores"
+                          class="form-control form-control-lg" (input)="modificarAtores($event.target.value)"></textarea>
+                      <br />
+
+                      <span class="label label-primary">Produtores:</span>
+                      <textarea  
+                          [value]="produtores" type="text" placeholder="produtores"
+                          class="form-control form-control-lg" (input)="modificarProdutores($event.target.value)"></textarea>
+                      <br />
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+

@@ -1,0 +1,32 @@
+<div class="row">
+  <select class="form-control ml-auto col-2" (change)="alterarPesquisa($event.target.value)">
+    <option selected value="titulo">Título</option>
+    <option value="ano">Ano Lançamento</option>
+    <option value="lingua">Lingua</option>
+  </select>
+  <input type="text" class="form-control mr-sm-2 col-3" (input)="pesquisar($event.target.value)"
+    placeholder="Pesquisa..." aria-label="Search" />
+</div>
+&nbsp;
+<div class="col-12">
+  <div class="card-columns">
+    <div class="card bg-dark text-light" *ngFor="let serie of series" (click)="visualizar(serie)">
+      <img class="card-img" src="http://image.tmdb.org/t/p/w500/{{ serie?.imagem }}" alt="_serie" />
+      <div class="card-body">
+        <p class="card-title">{{ serie?.titulo }}</p>
+        <p class="card-text">{{serie?.anoLancamento}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li *ngFor="let index of paginas" class="page-item">
+      <a class="page-link" (click)=alterarPagina(index)>{{index+1}}</a>
+    </li>
+  </ul>
+</nav>
+<ngb-pagination class="d-flex justify-content-center"  [collectionSize]="totalElements" [(page)]="page" [pageSize]="6" 
+[maxSize]="4" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" (pageChange)=alterarPagina($event)>
+</ngb-pagination>
+

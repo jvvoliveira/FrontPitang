@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="card-header">
+      <h5 class="title text-center">Editar Autor</h5>
+  </div>
+  <div class="card-body">
+      <div class="row">
+          <div class="col-4">
+              <img class="card-img" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ autor?.poster}}"
+                  alt="">
+                  <button class="btn btn-primary col-12" (click)="atualizarAutor()">Atualizar</button>
+          </div>
+          <div class="col-8">
+              <form [formGroup]="formDetalhes">
+                  <div class="form-group">
+                      <span class="label label-primary">Nome</span>
+                      <input type="text" formControlName="nome" placeholder="nome"
+                          class="form-control form-control-lg" (input)="this.autorDTO.nome = $event.target.value" />
+                      &nbsp;
+                      <span class="label label-primary">Cidade Natal</span>
+                      <input placeholder="cidade natal" formControlName="cidadeNatal" class="form-control form-control-lg"
+                          rows="8" (input)="this.autorDTO.cidadeNatal = $event.target.value"/>
+                          &nbsp;
+                      <span class="label label-primary">Gênero</span>
+                      <input type="number" min="0" max="2" placeholder="1-feminino e 2-masculino" formControlName="genero" class="form-control form-control-lg"
+                          (input)="this.autorDTO.genero = $event.target.value"/>
+                          &nbsp;
+                          <span class="label label-primary">Altura</span>
+                      <input type="number" placeholder="altura" formControlName="altura" class="form-control form-control-lg"
+                          (input)="this.autorDTO.altura = $event.target.value"/>
+                          &nbsp;
+                          <span class="label label-primary">Pais onde mora</span>
+                      <input type="text" placeholder="país onde mora" formControlName="paisOndeMora" class="form-control form-control-lg"
+                          (input)="this.autorDTO.paisOndeMora = $event.target.value"/>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

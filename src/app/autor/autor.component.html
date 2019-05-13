@@ -1,0 +1,25 @@
+<div class="row">
+  <select class="form-control ml-auto col-2">
+    <option selected value="nome">Nome</option>
+  </select>
+  <input type="text" class="form-control mr-sm-2 col-3" (input)="pesquisar($event.target.value)"
+    placeholder="Pesquisa..." aria-label="Search" />
+</div>
+&nbsp;
+<div class="col-12">
+  <div class="card-columns">
+    <div class="card bg-dark text-light" *ngFor="let autor of autores" (click)="visualizar(autor)">
+      <img class="card-img" height="350" src="http://image.tmdb.org/t/p/w500/{{ autor?.poster }}" alt="_autor" />
+      <div class="card-body">
+        <p class="card-title">{{ autor?.nome }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li *ngFor="let index of paginas" class="page-item">
+      <a class="page-link" (click)=alterarPagina(index)>{{index+1}}</a>
+    </li>
+  </ul>
+</nav>

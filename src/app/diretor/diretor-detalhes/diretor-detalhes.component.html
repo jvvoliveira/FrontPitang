@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <div class="card">
+        <img class="card-img" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{ diretor.poster }}" alt="">
+      </div>
+    </div>
+  
+    &nbsp;
+    <div class="col-12 col-md-7">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">{{ diretor?.nome }}</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-title text-justify"> <strong>Cidade Natal:</strong> {{ diretor?.cidadeNatal }}</p>
+
+          <p *ngIf="diretor.genero == '2'" class="card-title text-justify"><strong>Gênero:</strong> Masculino</p>
+          <p *ngIf="diretor.genero == '1'" class="card-title text-justify"><strong>Gênero:</strong> Feminino</p>
+          <p *ngIf="diretor.genero == '0'" class="card-title text-justify"><strong>Gênero:</strong> Não informado</p>
+
+          <p><strong>Altura:</strong> {{diretor.altura}}</p>
+          <p><strong>País onde mora:</strong> {{diretor.paisOndeMora}}</p>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <button class="btn btn-primary offset-1 col-md-4" (click)="goAtualizarDiretor(diretor)">Atualizar</button>
+        <button class="btn btn-danger offset-2 col-md-4" (click)="deletarDiretor()">Deletar</button>
+      </div>
+    </div>
+  </div>
+  </div>
