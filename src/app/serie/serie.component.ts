@@ -13,7 +13,6 @@ export class SerieComponent implements OnInit {
     private router: Router) { }
 
   series = [];
-  paginas = [];
   totalElements;
   page;
   numeroPaginas: number;
@@ -26,19 +25,12 @@ export class SerieComponent implements OnInit {
         this.numeroPaginas = response['totalPages'];
         this.totalElements = response['totalElements'];
         this.page = response['page'];
-        this.buildPaginas();
       }
     )
   }
 
-  buildPaginas(){
-    for(let i = 0; i < this.numeroPaginas; i++){
-      this.paginas.push(i);
-    }
-  }
-
   alterarPagina(pagina: number){
-    this.serieService.getAll(pagina).subscribe(
+    this.serieService.getAll(pagina-1).subscribe(
       response =>{
         this.series = response['content'];
       }

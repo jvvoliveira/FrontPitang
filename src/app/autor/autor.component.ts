@@ -12,7 +12,8 @@ export class AutorComponent implements OnInit {
   
   autores = [];
   numeroPaginas;
-  paginas = [];
+  totalElements;
+  page;
   elements;
 
   constructor(private autorService: AutorService,
@@ -23,16 +24,10 @@ export class AutorComponent implements OnInit {
       response => {
         this.autores = response['content'];
         this.numeroPaginas = response['totalPages'];
-        this.elements = response['totalElements'];
-        this.buildPaginas();
+        this.totalElements = response['totalElements'];
+        this.page = response['page'];
       }
     )
-  }
-
-  buildPaginas(){
-    for(let i = 0; i < this.numeroPaginas; i++){
-      this.paginas.push(i);
-    }
   }
 
   visualizar(autor) {
@@ -48,7 +43,7 @@ export class AutorComponent implements OnInit {
   }
 
   alterarPagina(pagina: number){
-    this.autorService.getAll(pagina).subscribe(
+    this.autorService.getAll(pagina-1).subscribe(
       response =>{
         this.autores = response['content'];
       }

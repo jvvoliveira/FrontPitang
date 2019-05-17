@@ -12,7 +12,8 @@ export class DiretorComponent implements OnInit {
   
   diretores = [];
   numeroPaginas;
-  paginas = [];
+  totalElements;
+  page;
   elements;
 
   constructor(private diretorService: DiretorService,
@@ -23,16 +24,10 @@ export class DiretorComponent implements OnInit {
       response => {
         this.diretores = response['content'];
         this.numeroPaginas = response['totalPages'];
-        this.elements = response['totalElements'];
-        this.buildPaginas();
+        this.totalElements = response['totalElements'];
+        this.page = response['page'];
       }
     )
-  }
-
-  buildPaginas(){
-    for(let i = 0; i < this.numeroPaginas; i++){
-      this.paginas.push(i);
-    }
   }
 
   visualizar(diretor) {
@@ -48,7 +43,7 @@ export class DiretorComponent implements OnInit {
   }
 
   alterarPagina(pagina: number){
-    this.diretorService.getAll(pagina).subscribe(
+    this.diretorService.getAll(pagina-1).subscribe(
       response =>{
         this.diretores = response['content'];
       }

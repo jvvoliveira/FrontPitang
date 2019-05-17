@@ -13,7 +13,6 @@ export class FilmeComponent implements OnInit {
     private router: Router) { }
 
   filmes = [];
-  paginas = [];
   page;
   numeroPaginas: number;
   totalElements;
@@ -26,19 +25,12 @@ export class FilmeComponent implements OnInit {
         this.numeroPaginas = response['totalPages'];
         this.totalElements = response['totalElements'];
         this.page = response['page'];
-        this.buildPaginas();
       }
     )
   }
 
-  buildPaginas(){
-    for(let i = 0; i < this.numeroPaginas; i++){
-      this.paginas.push(i);
-    }
-  }
-
   alterarPagina(pagina: number){
-    this.filmeService.getAll(pagina).subscribe(
+    this.filmeService.getAll(pagina-1).subscribe(
       response =>{
         this.filmes = response['content'];
       }

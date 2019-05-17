@@ -1,3 +1,4 @@
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DiretorDetalhesComponent } from './diretor-detalhes/diretor-detalhes.component';
 import { DiretorAtualizarComponent } from './diretor-atualizar/diretor-atualizar.component';
 import { NgModule } from '@angular/core';
@@ -16,7 +17,8 @@ import { DiretorService } from './diretor.service';
   imports: [
     CommonModule,
     DiretorRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers:[
     DiretorService

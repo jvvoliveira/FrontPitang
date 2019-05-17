@@ -6,6 +6,7 @@ import { AutorDetalhesComponent } from './autor-detalhes/autor-detalhes.componen
 import { AutorAtualizarComponent } from './autor-atualizar/autor-atualizar.component';
 import { AutorComponent } from './autor.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AutorRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers:[
     AutorService

@@ -13,7 +13,6 @@ export class AtorService extends BaseService{
 
   getAll(pagina) {
     return this.httpClient.get(this.URL+"atores?size=6&page="+pagina); 
-    //return this.httpClient.get(this.URL+"filmes"); 
   }
 
   getById(id: string) {

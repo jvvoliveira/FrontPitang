@@ -9,17 +9,14 @@
 <div class="col-12">
   <div class="card-columns">
     <div class="card bg-dark text-light" *ngFor="let diretor of diretores" (click)="visualizar(diretor)">
-      <img class="card-img" height="350" src="http://image.tmdb.org/t/p/w500/{{ diretor?.poster }}" alt="_diretor" />
+      <img *ngIf="diretor?.poster" class="card-img" height="350" src="http://image.tmdb.org/t/p/w500/{{ diretor?.poster }}" />
+      <img *ngIf="!diretor?.poster" class="card-img" height="350" src="/imagens/silhueta.jpg" />
       <div class="card-body">
         <p class="card-title">{{ diretor?.nome }}</p>
       </div>
     </div>
   </div>
 </div>
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li *ngFor="let index of paginas" class="page-item">
-      <a class="page-link" (click)=alterarPagina(index)>{{index+1}}</a>
-    </li>
-  </ul>
-</nav>
+<ngb-pagination class="d-flex justify-content-center"  [collectionSize]="totalElements" [(page)]="page" [pageSize]="6" 
+[maxSize]="4" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" (pageChange)=alterarPagina($event)>
+</ngb-pagination>

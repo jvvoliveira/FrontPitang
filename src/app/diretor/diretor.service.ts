@@ -13,7 +13,6 @@ export class DiretorService extends BaseService{
 
   getAll(pagina) {
     return this.httpClient.get(this.URL+"produtores/diretores?size=6&page="+pagina); 
-    //return this.httpClient.get(this.URL+"filmes"); 
   }
 
   getById(id: string) {
@@ -22,8 +21,8 @@ export class DiretorService extends BaseService{
   deleteById(id: string) {
     return this.httpClient.delete(this.URL+"produtores/"+id);
   }
-  updateById(id: string, atorAtualizado){
-    return this.httpClient.patch(this.URL+"produtores/"+id, atorAtualizado);
+  updateById(id: string, diretorAtualizado){
+    return this.httpClient.patch(this.URL+"produtores/"+id, diretorAtualizado);
   }
   searchByNome(nome: string){
     return this.httpClient.get(this.URL+"produtores/diretores/filtro/?nome="+nome);

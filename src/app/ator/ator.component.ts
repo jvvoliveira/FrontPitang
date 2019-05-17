@@ -10,8 +10,7 @@ import { Router } from '@angular/router';
 export class AtorComponent implements OnInit {
 
   atores = [];
-  totalPages;
-  paginas = [];
+  numeroPaginas;
   totalElements;
   page;
 
@@ -22,18 +21,11 @@ export class AtorComponent implements OnInit {
     this.atorService.getAll(0).subscribe(
       response => {
         this.atores = response['content'];
-        this.totalPages = response['totalPages'];
+        this.numeroPaginas = response['totalPages'];
         this.totalElements = response['totalElements'];
         this.page = response['page'];
-        this.buildPaginas();
       }
     )
-  }
-
-  buildPaginas(){
-    for(let i = 0; i < this.totalPages; i++){
-      this.paginas.push(i);
-    }
   }
 
   visualizar(ator) {
@@ -49,7 +41,7 @@ export class AtorComponent implements OnInit {
   }
 
   alterarPagina(pagina: number){
-    this.atorService.getAll(pagina).subscribe(
+    this.atorService.getAll(pagina-1).subscribe(
       response =>{
         this.atores = response['content'];
       }
